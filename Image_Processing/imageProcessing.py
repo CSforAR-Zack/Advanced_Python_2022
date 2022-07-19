@@ -7,9 +7,9 @@ def main():
 
     #imageFun(im)
 
-    im1 = Image.open('image1.png')
+    im1 = Image.open('earth.png')
     im1 = im1.convert('RGBA')
-    im2 = Image.open('image2.png')
+    im2 = Image.open('color_grade.png')
 
     mergeThee(im1, im2)
 
