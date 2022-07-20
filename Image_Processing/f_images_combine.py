@@ -35,7 +35,7 @@ def main():
     earth = earth.convert("RGBA")
     new_image = Image.alpha_composite(earth, grade)
 
-    new_image.save("new_image.jpg")
+    new_image.save("new_image.png")
 
     
 
