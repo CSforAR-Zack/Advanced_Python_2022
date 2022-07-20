@@ -22,8 +22,8 @@ class SolarObject:
             self.distance_to_sun = 0
 
             self.vectors = self.get_starting_vectors(id, date)
-            self.x = self.vectors["x"][-1] * Constants.AU # m
-            self.y = self.vectors["y"][-1] * Constants.AU # m
+            self.x = self.vectors["x"][-1] * Constants.AU # meters
+            self.y = self.vectors["y"][-1] * Constants.AU # meters
             self.x_vel = self.vectors["vx"][-1] * Constants.AU / 24 / 3600 # m/s
             self.y_vel = self.vectors["vy"][-1] * Constants.AU / 24 / 3600 # m/s
 
@@ -34,7 +34,7 @@ class SolarObject:
 
     def draw(self, win):
         x = self.x * Constants.SCALE + Constants.WIDTH / 2
-        y = self.y * Constants.SCALE + Constants.WIDTH / 2
+        y = self.y * Constants.SCALE + Constants.HEIGHT / 2
 
         if len(self.orbit) > 2:
             updated_points = []
@@ -49,6 +49,7 @@ class SolarObject:
         pygame.draw.circle(win, self.color, (x, y), self.radius / Constants.WIN_EDGE_FROM_SUN)
 
     def attraction(self, other):
+        # a = (a**2 + b**2)**(1/2) Distance to Sun
         distance_x = other.x - self.x
         distance_y = other.y - self.y
         distance = math.sqrt(distance_x ** 2 + distance_y ** 2)
@@ -56,7 +57,9 @@ class SolarObject:
         if other.sun:
             self.distance_to_sun = distance
 
+        # F = G(m1m2)/(r**2)
         force = Constants.G * self.mass * other.mass / distance ** 2
+        # Break Force into x and y component 
         theta = math.atan2(distance_y, distance_x)
         force_x = math.cos(theta) * force
         force_y = math.sin(theta) * force
@@ -72,6 +75,7 @@ class SolarObject:
             total_force_x += fx
             total_force_y += fy
 
+        #f=ma > f=mv/t > v=f/m*t
         self.x_vel += total_force_x / self.mass * Constants.TIMESTEP
         self.y_vel += total_force_y / self.mass * Constants.TIMESTEP
         

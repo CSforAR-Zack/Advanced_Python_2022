@@ -5,7 +5,7 @@ class Constants:
 
     WIDTH = 800
     HEIGHT = 800
-    WIN_EDGE_FROM_SUN = 10 # how many AUs is the Edge of the window
+    WIN_EDGE_FROM_SUN = 4 # how many AUs is the Edge of the window
     
     AU = 149597870700
     G = 6.67430e-11

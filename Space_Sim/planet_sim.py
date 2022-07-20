@@ -11,6 +11,7 @@ def main():
     win = pygame.display.set_mode((Constants.WIDTH, Constants.HEIGHT))
     pygame.display.set_caption("Planet Simulation")
     clock = pygame.time.Clock()
+    font = pygame.font.SysFont("monospace", 40)
 
     # Setting up information for planet simulation.
     start_date = "2022-07-18"
@@ -27,9 +28,11 @@ def main():
 
     planets = [sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
 
+    elapsed_time = 0
+
     run = True
     while run:
-        clock.tick(60)
+        clock.tick(30)
 
         win.fill(Color.BLACK)
 
@@ -41,7 +44,11 @@ def main():
             planet.update_position(planets)
             planet.draw(win)
 
+        elapsed_time += 1
+        label = font.render(f"Day: {elapsed_time}", 1, (0, 255, 255))
+        win.blit(label, (10, 10))
         pygame.display.update()
+        
     
     pygame.quit()
 
