@@ -48,9 +48,10 @@ def main():
     for y in range(image.size[1]):
         for x in range(image.size[0]):
             cp = image.getpixel((x,y))
-            new_pixel = (cp[0], cp[1], cp[2]//2)
+            new_pixel = (cp[0], cp[1]//2, cp[2])
             image.putpixel((x, y), new_pixel)
-    image.save("new_image.jpg")
+    image.show()
+    # image.save("new_image.jpg")
 
 if __name__ == "__main__":
     main()

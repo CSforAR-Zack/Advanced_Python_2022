@@ -37,7 +37,7 @@ def main():
     # new_image = image.filter(ImageFilter.DETAIL)
     # new_image = image.filter(ImageFilter.EDGE_ENHANCE)
     # new_image = image.filter(ImageFilter.FIND_EDGES)
-    # new_image = image.filter(ImageFilter.EMBOSS)
+    new_image = image.filter(ImageFilter.EMBOSS)
     # new_image = image.filter(ImageFilter.SHARPEN)
     # new_image = image.filter(ImageFilter.SMOOTH_MORE)
 
@@ -52,10 +52,10 @@ def main():
     # new_image = image.filter(ImageFilter.UnsharpMask(10))
 
     # Combining Filters: blur + emboss
-    new_image = image.filter(ImageFilter.EMBOSS)
-    new_image = new_image.filter(ImageFilter.GaussianBlur(10))
+    # new_image = image.filter(ImageFilter.EMBOSS)
+    # new_image = new_image.filter(ImageFilter.GaussianBlur(10))
 
-    new_image.save("new_image.jpg")
+    # new_image.save("new_image.jpg")
 
 if __name__ == "__main__":
     main()

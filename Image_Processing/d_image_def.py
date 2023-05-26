@@ -4,8 +4,8 @@ def main():
     image = Image.open("bfly.jpg")
 
     new_image = ImageOps.deform(image, Deformer())
-
-    new_image.save("new_image.jpg")
+    new_image.show()
+    # new_image.save("new_image.jpg")
 
 class Deformer():
     def getmesh(self, img):
